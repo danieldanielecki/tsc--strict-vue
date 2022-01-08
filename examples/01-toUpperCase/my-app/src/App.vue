@@ -1,20 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <p>{{ stringValue }}</p>
+    <p>{{ upperCaseString }}</p>
+    <button @click="myFunction()">Click Me</button>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import { Component, Vue } from "vue-property-decorator";
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
-export default class App extends Vue {}
+@Component({})
+export default class App extends Vue {
+  public stringValue = "My name is Daniel";
+  public upperCaseString = "";
+
+  myFunction() {
+    this.upperCaseString = this.stringValue.toUpperCase();
+  }
+}
 </script>
 
 <style>
