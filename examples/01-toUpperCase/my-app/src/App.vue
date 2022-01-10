@@ -2,7 +2,7 @@
   <div id="app">
     <p>{{ stringValue }}</p>
     <p>{{ upperCaseString }}</p>
-    <button @click="myFunction()">Click Me</button>
+    <button @click="myFunction(2)">Click Me</button>
   </div>
 </template>
 
@@ -14,8 +14,8 @@ export default class App extends Vue {
   public stringValue = "My name is Daniel";
   public upperCaseString = "";
 
-  myFunction() {
-    this.upperCaseString = this.stringValue.toUpperCase();
+  myFunction(sampleParameter: string): void {
+    this.upperCaseString = sampleParameter.toUpperCase();
   }
 }
 </script>
