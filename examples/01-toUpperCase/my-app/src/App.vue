@@ -11,8 +11,8 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class App extends Vue {
-  public stringValue = "My name is Daniel";
-  public upperCaseString = "";
+  public stringValue: string = "My name is Daniel";
+  public upperCaseString: string = "";
 
   myFunction(sampleParameter: string): void {
     this.upperCaseString = sampleParameter.toUpperCase();
