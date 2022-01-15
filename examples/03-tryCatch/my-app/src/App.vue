@@ -1,20 +1,38 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <p>Value of string:</p>
+    <p>{{ myString }}</p>
+    <button @click="myFunction()">Click me</button>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import { Component, Vue } from "vue-property-decorator";
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
-export default class App extends Vue {}
+@Component({})
+export default class App extends Vue {
+  public myString = "";
+
+  public myFunction(): void {
+    console.log("myFunction with timeout of 3 seconds...");
+    this.myString = "myFunction with timeout of 3 seconds...";
+    setTimeout(this.myFunction2, 3000);
+  }
+
+  public myFunction2(): void {
+    console.log("myFunction2");
+    this.myString = "myFunction2";
+    try {
+      console.log("try");
+      this.myString = "try";
+    } catch (err) {
+      if (err instanceof Error) {
+        console.log(err.message);
+        this.myString = err.message;
+      }
+    }
+  }
+}
 </script>
 
 <style>
