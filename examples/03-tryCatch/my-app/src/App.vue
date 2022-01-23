@@ -26,10 +26,8 @@ export default class App extends Vue {
       console.log("try");
       this.myString = "try";
     } catch (err) {
-      if (err instanceof Error) {
-        console.log(err.message);
-        this.myString = err.message;
-      }
+      console.log(err.message);
+      this.myString = err.message;
     }
   }
 }

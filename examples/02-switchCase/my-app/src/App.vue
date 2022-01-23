@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <p>Today is:</p>
-    <p>{{ today }}</p>
-    <button @click="myFunction()">Which day</button>
+    <p>Value of string:</p>
+    <p>{{ myString }}</p>
+    <button @click="myFunction()">Click me</button>
   </div>
 </template>
 
@@ -11,34 +11,25 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component({})
 export default class App extends Vue {
-  public today: Date = new Date();
+  public myString = "";
 
-  myFunction(): void {
-    switch (this.today.getDay()) {
-      case 0:
-        alert("Sunday");
-        break;
-      case 1:
-        alert("Monday");
-        break;
-      case 2:
-        alert("Tuesday");
-        break;
-      case 3:
-        alert("Wednesday");
-        break;
-      case 4:
-        alert("Thursday");
-        break;
-      case 5:
-        alert("Friday");
-        break;
-      case 6:
-        alert("Saturday");
-        break;
-      default:
-        alert("No information available for that day.");
-        break;
+  public myFunction(): void {
+    console.log("myFunction with timeout of 3 seconds...");
+    this.myString = "myFunction with timeout of 3 seconds...";
+    setTimeout(this.myFunction2, 3000);
+  }
+
+  public myFunction2(): void {
+    console.log("myFunction2");
+    this.myString = "myFunction2";
+    try {
+      console.log("try");
+      this.myString = "try";
+    } catch (err) {
+      // if (err instanceof Error) {
+      console.log(err.message);
+      this.myString = err.message;
+      // }
     }
   }
 }
